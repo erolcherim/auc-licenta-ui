@@ -1,0 +1,13 @@
+.search-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.name-search{
+    width: 80%;
+}
+
+.price-search{
+    padding-left: 20px;
+    width: 20%;
+}

@@ -1,0 +1,29 @@
+<p *ngIf="name.length==0">Displaying last X listings posted</p>
+<p *ngIf="name.length!=0 && price.length==0">Found a total of {{totalSearchResults}} search results for "{{name}}"</p>
+<p *ngIf="name.length!=0 && price.length!=0">Found a total of {{totalSearchResults}} search results for "{{name}}" with price near {{price}}</p>
+<div>
+      <div class="grid" *ngFor="let item of listings">
+        <mat-card>
+            <img mat-card-image class="content-image" src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png">
+            <mat-card-content>
+                <div class="content-header">
+                    <div class="content-title">
+                        <mat-card-title>{{item.name}}</mat-card-title>
+                        <mat-card-subtitle>Posted {{item.createdDate | date: 'dd MMM'}} at {{item.createdDate | date: 'hh:mm'}}</mat-card-subtitle>
+                    </div>
+                    <div class="content-price">
+                        <div class="current-price">{{item.currentPrice}}</div>
+                        <div class="starting-price">{{item.startingPrice}}</div>
+                    </div>
+                </div>
+                <div class="item-description">{{item.description}}</div>
+            </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-paginator [length]="totalSearchResults"
+                     [pageSize]="pageSize"
+                     [pageSizeOptions]="[5, 10, 25, 100]"
+                     (page) ="pageChanged($event)"
+                    aria-label="Select page">
+        </mat-paginator>
+</div>
