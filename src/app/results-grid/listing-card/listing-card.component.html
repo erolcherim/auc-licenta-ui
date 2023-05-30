@@ -1,0 +1,16 @@
+<mat-card>
+    <img mat-card-image class="content-image" src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png">
+    <mat-card-content>
+        <div class="content-header">
+            <div class="content-title">
+                <mat-card-title>{{listing.name}}</mat-card-title>
+                <mat-card-subtitle>Posted {{listing.createdDate | date: 'dd MMM'}} at {{listing.createdDate | date: 'hh:mm'}}</mat-card-subtitle>
+            </div>
+            <div class="content-price">
+                <div class="current-price">{{listing.currentPrice}}</div>
+                <div class="starting-price">{{listing.startingPrice}}</div>
+            </div>
+        </div>
+        <div class="item-description">{{listing.description}}</div>
+    </mat-card-content>
+</mat-card>

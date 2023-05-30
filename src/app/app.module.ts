@@ -14,12 +14,20 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { FormControl, FormsModule } from '@angular/forms';
+import { ListingCardComponent } from './results-grid/listing-card/listing-card.component';
+import { ListingViewComponent } from './listing-view/listing-view.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { BidGridComponent } from './listing-view/bid-grid/bid-grid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResultsGridComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ListingCardComponent,
+    ListingViewComponent,
+    HomePageComponent,
+    BidGridComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,7 @@ import { FormControl, FormsModule } from '@angular/forms';
     MatInputModule,
     MatIconModule,
     FormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

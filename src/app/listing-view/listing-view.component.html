@@ -1,0 +1,14 @@
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+        <mat-card-title>{{listing?.name}}</mat-card-title>
+        <mat-card-subtitle>{{listing?.activatedDate}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            {{listing?.description}}
+        </mat-card-content>
+    </mat-card>
+    <app-bid-grid [bids]="listing?.bids!"></app-bid-grid>
+</div>
+  
