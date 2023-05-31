@@ -16,3 +16,13 @@ app-bid-grid{
   width: 100%;
 }
 
+.similar{
+  display: flex;
+  flex-direction: row;
+}
+
+.similar-card{
+  display:flex;
+  max-width: 200px;
+}
+

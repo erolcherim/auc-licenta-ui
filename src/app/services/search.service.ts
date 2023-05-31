@@ -43,7 +43,6 @@ export class SearchService {
   }
 
   getListingById(id:any) : Observable<Listing> {
-    console.log("called")
     return this.http.get(this.apiurl + `/${id}`).pipe(map((response:any) =>({
       id: response.id,
       userId: response.userId,

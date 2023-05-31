@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchService } from '../services/search.service';
-import { ResultsGridComponent } from '../results-grid/results-grid.component';
 
 @Component({
   selector: 'app-search-bar',

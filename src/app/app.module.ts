@@ -11,23 +11,27 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { SearchBarComponent } from './search-bar/search-bar.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import { FormControl, FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ListingCardComponent } from './results-grid/listing-card/listing-card.component';
 import { ListingViewComponent } from './listing-view/listing-view.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BidGridComponent } from './listing-view/bid-grid/bid-grid.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavBarComponent,
     ResultsGridComponent,
-    SearchBarComponent,
     ListingCardComponent,
     ListingViewComponent,
     HomePageComponent,
-    BidGridComponent
+    BidGridComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,9 @@ import { BidGridComponent } from './listing-view/bid-grid/bid-grid.component';
     MatIconModule,
     FormsModule,
     MatPaginatorModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
