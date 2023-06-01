@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { LoginService } from '../services/login.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-topup',
@@ -12,7 +13,7 @@ export class TopupComponent {
   topUpAmount = new FormControl('', [Validators.required, Validators.min(5)])
   paymentMethod = new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern("(?:\\d[ -]*?){13,16}")])
 
-  constructor(private userService:UserService, private service:LoginService) {}
+  constructor(private userService:UserService, private service:LoginService, private _snackBar:MatSnackBar) {}
 
   getErrorMessageTopUp() {
     if (this.topUpAmount.hasError('min')) {
