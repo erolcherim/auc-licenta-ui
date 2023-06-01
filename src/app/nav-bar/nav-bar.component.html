@@ -6,6 +6,10 @@
       <button mat-icon-button routerLink="home">
         <mat-icon>favorite</mat-icon>
       </button>
-      <button mat-fab extended class="login-button" routerLink="login">Sign In</button>
+      <button *ngIf="isLoggedIn==false" mat-fab extended class="login-button" routerLink="login">Sign In</button>
+      <span *ngIf="isLoggedIn==true" class="login-button">Hello {{user?.firstName}}</span>
+      <span *ngIf="isLoggedIn==true" class="nav-bar-element">Balance: {{user?.balance}}</span>
+      <button *ngIf="isLoggedIn==true" class="nav-bar-element" mat-fab extended routerLink="topup">TopUp</button>
+      <button *ngIf="isLoggedIn==true" class="nav-bar-element" mat-fab extended (click)="logOut()">Log Out</button>
     </mat-toolbar>
 </p>

@@ -1,0 +1,14 @@
+<div class="topup-container">
+    <p>Top-up</p>
+    <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input type="number" matInput  placeholder="Top Up Amount" [formControl]="topUpAmount" requred>
+        <mat-error *ngIf="topUpAmount.invalid">{{getErrorMessageTopUp()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Credit Card Number</mat-label>
+        <input matInput  placeholder="Payment Method" [formControl]="paymentMethod" requred>
+        <mat-error  *ngIf="paymentMethod.invalid">{{getErrorMessagePaymentMethod()}}</mat-error>
+    </mat-form-field>
+    <button mat-fab extended (click)="proceedTopUp()">Proceed </button>
+</div>

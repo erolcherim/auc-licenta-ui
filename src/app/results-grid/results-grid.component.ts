@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, EventEmitter, Output } fro
 import { tap} from 'rxjs';
 import { SearchService, re } from '../services/search.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Listing } from '../model/listing';
 
 @Component({
   selector: 'app-results-grid',
@@ -9,7 +10,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrls: ['./results-grid.component.css']
 })
 export class ResultsGridComponent implements OnInit, AfterViewInit{
-  listings!:Array<any>;
+  listings!:Array<Listing>;
   name: string = "";
   price: string = ""
   totalSearchResults?:number;

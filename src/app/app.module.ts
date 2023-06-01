@@ -21,6 +21,12 @@ import { BidGridComponent } from './listing-view/bid-grid/bid-grid.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TopupComponent } from './topup/topup.component';
+import { RegisterComponent } from './register/register.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,11 @@ import { MatIconModule } from '@angular/material/icon';
     ListingViewComponent,
     HomePageComponent,
     BidGridComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    LoginComponent,
+    TopupComponent,
+    RegisterComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +57,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatPaginatorModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
