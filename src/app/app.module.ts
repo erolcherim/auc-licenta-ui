@@ -26,7 +26,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TopupComponent } from './topup/topup.component';
 import { RegisterComponent } from './register/register.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { FavoriteGridComponent } from './favorite/favorite-grid/favorite-grid.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     LoginComponent,
     TopupComponent,
     RegisterComponent,
-    FavoritesComponent,
+    FavoriteComponent,
+    FavoriteGridComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

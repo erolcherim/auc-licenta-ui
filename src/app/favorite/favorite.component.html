@@ -1,0 +1,12 @@
+<div class="appSearch">
+    <p>favorite works!</p>
+    <mat-tab-group>
+        <mat-tab label="Favorites">
+            <app-favorite-grid (notifyPagingChanges)="childEvent($event)" [favorites]="favorites" [noFavorites]="noFavorites"></app-favorite-grid>
+        </mat-tab>
+        <mat-tab label="My Listings">
+            <app-favorite-grid (notifyPagingChanges)="childEvent($event)" [favorites]="myListings" [noFavorites]="noMyListings"></app-favorite-grid>
+        </mat-tab>
+    </mat-tab-group>
+    
+</div>

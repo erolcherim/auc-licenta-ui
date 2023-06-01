@@ -1,0 +1,12 @@
+<div>
+    <div class="grid" *ngFor="let item of favorites">
+        <app-listing-card [listing]="item" routerLink="/view/{{item.id}}"></app-listing-card>
+    </div>
+    <mat-paginator [length]="noFavorites"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page) ="pageChanged($event)"
+                aria-label="Select page">
+    </mat-paginator>
+</div>
+

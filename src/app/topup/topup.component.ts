@@ -30,6 +30,15 @@ export class TopupComponent {
   }
 
   proceedTopUp(){
-    this.userService.topUp(this.service.getIdFromToken(), Number(this.topUpAmount.value)).subscribe()
+    this.userService.topUp(this.service.getIdFromToken(), Number(this.topUpAmount.value)).subscribe(
+      (r) => {
+        window.location.reload()
+    }, 
+      err => {
+        this._snackBar.open(err.error.response, "Dismiss", {
+          duration:2000
+        })
+      })
   }
 }
+

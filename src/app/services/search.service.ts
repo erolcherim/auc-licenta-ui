@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { __values } from 'tslib';
@@ -57,7 +57,18 @@ export class SearchService {
       expirationDate: response.expirationDate
     })))
   }
+
+  getListingsForCurrentUser(page:number, pageSize:number) : Observable<re> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.get<any>(this.apiurl+"/current-user", {headers: headers, params: {"page":page, "pageSize":pageSize}}).pipe(map((data:re)=>({
+      noResults: data.noResults,
+      listings: data.listings
+    })))
+  }
 }
+
 
 export class re{
   noResults!:number

@@ -29,7 +29,9 @@ export class UserService{
       Authorization: `Bearer  ${localStorage.getItem('token')}`
     })
 
-    return this.http.post(this.apiurl + `/balance/${id}`, topUpAmount, {headers: headers, responseType: 'text'})
+    return this.http.post<any>(this.apiurl + `/balance/${id}`, topUpAmount, {headers: headers}).pipe(map((data:TopUpResponse) => ({
+      response:data.response
+    })))
   }
 }
 

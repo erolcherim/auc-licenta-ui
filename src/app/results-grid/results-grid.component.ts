@@ -92,7 +92,6 @@ export class ResultsGridComponent implements OnInit, AfterViewInit{
   }
 
   pageChanged(event:any){
-    console.log(event.pageSize)
   }
 }
 
