@@ -57,7 +57,7 @@ export class SearchService {
       expirationDate: response.expirationDate
     })))
   }
-
+  
   getListingsForCurrentUser(page:number, pageSize:number) : Observable<re> {
     const headers = new HttpHeaders({
       Authorization: `Bearer  ${localStorage.getItem('token')}`

@@ -1,0 +1,22 @@
+<div class="add-listing-container">
+    <p>Add listing</p>
+    <form [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Listing name</mat-label>
+        <input matInput formControlName="name" placeholder="Red umbrella" required>
+        <mat-error>{{getErrorName()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Starting price</mat-label>
+        <input type="number" formControlName="startingPrice"  matInput placeholder="5" required>
+        <mat-error>{{getErrorStartingPrice()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="slightly used, still works"></textarea>
+    </mat-form-field>
+</form>
+    <div class = "buttons">
+        <button mat-fab extended id="add-button" (click)="proceedAddListing()">Add</button>
+    </div>
+</div>

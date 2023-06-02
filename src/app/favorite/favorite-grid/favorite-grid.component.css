@@ -1,0 +1,14 @@
+.grid{
+    display:flex;
+    padding: 4px;
+}
+
+mat-card-content{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+app-listing-card{
+    width: 100%;
+}

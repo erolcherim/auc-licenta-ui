@@ -1,4 +1,4 @@
-.register-form{
+:host{
     display: flex;
     width: 400px;
     margin: auto;
@@ -20,11 +20,9 @@ mat-form-field{
     width: 100%;
 }
 
-#register-button{
+#add-button{
     color:white;
-    background-color: #3F51B5;
+    background-color:#3F51B5;
     width:48%;
-    margin: auto;
+    margin:auto;
 }
-
-

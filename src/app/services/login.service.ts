@@ -17,8 +17,10 @@ export class LoginService {
     })))
   }
 
-  proceedLoginRaw(user:any) {
-    return this.http.post(this.apiurl+"/authenticate", user)
+  proceedRegister(userRegister:any) : Observable<AuthResponse>{
+    return this.http.post<AuthResponse>(this.apiurl+"/register", userRegister).pipe(map((r:AuthResponse)=>({
+      token:r.token
+    })))
   }
 
   getIdFromToken(){

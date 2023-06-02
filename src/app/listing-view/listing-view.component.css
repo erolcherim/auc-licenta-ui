@@ -26,3 +26,15 @@ app-bid-grid{
   max-width: 200px;
 }
 
+.add-button{
+  width:80px;
+  height: 80px;
+  position: fixed;
+  bottom:60px;
+  right: 60px;
+  z-index: 1;
+}
+
+.mat-icon{
+  scale: 1.5;
+}

@@ -1,15 +1,13 @@
-<p>
-    <mat-toolbar color="primary">
-      <button mat-icon-button routerLink="home">
-        <mat-icon>home</mat-icon>
-      </button>
-      <button *ngIf="isLoggedIn==true" mat-icon-button routerLink="favorites">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button *ngIf="isLoggedIn==false" mat-fab extended class="login-button" routerLink="login">Sign In</button>
-      <span *ngIf="isLoggedIn==true" class="login-button">Balance: {{user?.balance}}</span>
-      <button *ngIf="isLoggedIn==true" class="nav-bar-element" mat-fab extended routerLink="topup">TopUp</button>
-      <span *ngIf="isLoggedIn==true" class="nav-bar-element">Hello, {{user?.firstName}}</span>
-      <button *ngIf="isLoggedIn==true" class="nav-bar-element" mat-fab extended (click)="logOut()">Log Out</button>
-    </mat-toolbar>
-</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button routerLink="home">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button *ngIf="isLoggedIn==true" mat-icon-button routerLink="favorites">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button *ngIf="isLoggedIn==false" mat-fab extended class="login-button" routerLink="login">Sign In</button>
+  <span *ngIf="isLoggedIn==true" class="login-button">Balance: {{user?.balance}}</span>
+  <button *ngIf="isLoggedIn==true" class="nav-bar-element" mat-fab extended routerLink="topup">TopUp</button>
+  <span *ngIf="isLoggedIn==true" class="nav-bar-element">Hello, {{user?.firstName}}</span>
+  <button *ngIf="isLoggedIn==true" class="nav-bar-element" mat-fab extended (click)="logOut()">Log Out</button>
+</mat-toolbar>

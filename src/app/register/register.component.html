@@ -1,1 +1,38 @@
-<p>register works!</p>
+<div class="register-form">
+    <p>Register</p>
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="John" [formControl]="firstName" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessageName(firstName)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Snow" [formControl]="lastName" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessageName(lastName)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="email@domain.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="password-form-field">
+        <mat-label>Password</mat-label>
+        <input matInput [formControl]="password" requred [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="email.invalid">{{getErrorMessagePassword(password)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="password-form-field">
+        <mat-label>Confirm password</mat-label>
+        <input matInput [formControl]="confirmPassword" requred [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="email.invalid">{{getErrorMessagePassword(confirmPassword)}}</mat-error>
+    </mat-form-field>
+    <p>Password must be longer than 8 characters, alpha-numeric, contain one upper/lowercase and special character</p>
+    <div class = "buttons">
+        <button mat-fab extended id="register-button" (click)="attemptRegister()">Register</button>
+    </div>
+</div>

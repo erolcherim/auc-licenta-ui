@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -42,7 +43,6 @@ export class LoginComponent {
       }
     )
   }
-
 }
 
 

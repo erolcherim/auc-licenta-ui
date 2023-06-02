@@ -1,5 +1,4 @@
-<div class="appSearch">
-    <p>favorite works!</p>
+<div class="app-favorites">
     <mat-tab-group>
         <mat-tab label="Favorites">
             <app-favorite-grid (notifyPagingChanges)="childEvent($event)" [favorites]="favorites" [noFavorites]="noFavorites"></app-favorite-grid>
@@ -8,5 +7,5 @@
             <app-favorite-grid (notifyPagingChanges)="childEvent($event)" [favorites]="myListings" [noFavorites]="noMyListings"></app-favorite-grid>
         </mat-tab>
     </mat-tab-group>
-    
+    <button mat-fab class="add-button" routerLink="/add"><mat-icon>add</mat-icon></button>
 </div>
