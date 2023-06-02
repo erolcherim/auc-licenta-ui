@@ -17,7 +17,7 @@ export class RegisterComponent {
   password = new FormControl('', [Validators.required, Validators.pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")])
   confirmPassword = new FormControl('', [Validators.required, Validators.pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")])
 
-  constructor(private service:LoginService, private _snackBar:MatSnackBar){}
+  constructor(private service:LoginService, private router:Router, private _snackBar:MatSnackBar){}
 
   getErrorMessageEmail() {
     if (this.email.hasError('required')) {
@@ -58,7 +58,7 @@ export class RegisterComponent {
       this.service.proceedRegister(userRegister).subscribe({
         next: (r) => {
           localStorage.setItem('token', r.token)
-          // this.router.navigate(['home']).then(()=>window.location.reload())
+          this.router.navigate(['home']).then(()=>window.location.reload())
         },
         error: (e) => {
           this._snackBar.open(e.error.response, "Dismiss", {

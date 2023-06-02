@@ -9,7 +9,15 @@
             {{listing?.currentPrice}}
         </mat-card-title>
     </mat-card>
-    <app-bid-grid [bids]="listing?.bids!"></app-bid-grid>
+    <div class="bid-input" *ngIf="listing?.isActive==1">
+        <mat-form-field>
+            <mat-label>Bid on listing</mat-label>
+            <input matInput type="number" placeholder="{{suggestedBidAmount}}" [formControl]="bidAmount">
+        </mat-form-field>
+        <button mat-fab extended (click)="proceedBid()">Bid</button>
+        <app-bid-grid [bids]="listing?.bids!"></app-bid-grid>
+    </div>
+
 </div>
 {{listing?.description}}
 <div class="similar" >

@@ -33,11 +33,6 @@ export class AddListingComponent {
     return this.form.controls['startingPrice'].hasError('pattern') ? 'Price must an integer (no decimals) and at least 1' : '';
   }
 
-
-
-
-
-
   proceedAddListing(){
     if (this.form.valid){
       var listing = {
@@ -47,7 +42,7 @@ export class AddListingComponent {
       }
 
       this.service.postListing(listing).subscribe({
-        next:(r)=>{this.router.navigate(['home']).then(() => window.location.reload())},
+        next:(r)=>{this.router.navigate(['home']).then(() => window.location.reload())}, //TODO get id and route there
         error:(e)=>(this._snackBar.open(e.error.response, "Dismiss", {
           duration: 2000
         }))

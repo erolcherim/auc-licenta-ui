@@ -38,3 +38,8 @@ app-bid-grid{
 .mat-icon{
   scale: 1.5;
 }
+
+.bid-input{
+  display:flex;
+  flex-direction: column;
+}
