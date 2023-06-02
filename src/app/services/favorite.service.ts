@@ -21,4 +21,11 @@ export class FavoriteService {
       listings: data.listings
     })))
   }
+
+  getFavoritesIds() : Observable<Array<String>> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.get<Array<string>>(this.apiurl+"/query-id", {headers: headers})
+  }
 }

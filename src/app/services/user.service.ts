@@ -11,12 +11,12 @@ export class UserService{
 
   readonly apiurl = "http://localhost:8080/api/v1/user"
 
-  getUser(id:string) : Observable<User>{
+  getUser() : Observable<User>{
     const headers = new HttpHeaders({
       Authorization: `Bearer  ${localStorage.getItem('token')}`
     })
 
-    return this.http.get<any>(this.apiurl + `/${id}`, {headers: headers}).pipe(map((data:User)=>({
+    return this.http.get<any>(this.apiurl + `/`, {headers: headers}).pipe(map((data:User)=>({
       email : data.email,
       firstName : data.firstName,
       lastName : data.lastName,

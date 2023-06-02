@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ListingService, SingleResponse } from '../services/listing.service';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-listing-view',

@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { LoginService } from '../services/login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topup',
@@ -13,7 +14,7 @@ export class TopupComponent {
   topUpAmount = new FormControl('', [Validators.required, Validators.min(5)])
   paymentMethod = new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16), Validators.pattern("(?:\\d[ -]*?){13,16}")])
 
-  constructor(private userService:UserService, private service:LoginService, private _snackBar:MatSnackBar) {}
+  constructor(private userService:UserService, private service:LoginService, private _snackBar:MatSnackBar, private router:Router) {}
 
   getErrorMessageTopUp() {
     if (this.topUpAmount.hasError('min')) {
@@ -32,7 +33,7 @@ export class TopupComponent {
   proceedTopUp(){
     this.userService.topUp(this.service.getIdFromToken(), Number(this.topUpAmount.value)).subscribe(
       (r) => {
-        window.location.reload()
+        this.router.navigate(['home']).then(() => window.location.reload())
     }, 
       err => {
         this._snackBar.open(err.error.response, "Dismiss", {

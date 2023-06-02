@@ -3,7 +3,7 @@
 <p *ngIf="name.length!=0 && price.length!=0">Found a total of {{totalSearchResults}} search results for "{{name}}" with price near {{price}}</p>
 <div>
         <div class="grid" *ngFor="let item of listings">
-            <app-listing-card [listing]="item" routerLink="/view/{{item.id}}"></app-listing-card>
+            <app-listing-card [listing]="item"></app-listing-card>
         </div>
         <mat-paginator [length]="totalSearchResults"
                      [pageSize]="5"

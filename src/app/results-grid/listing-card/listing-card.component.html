@@ -1,6 +1,6 @@
 <mat-card>
     <img mat-card-image class="content-image" src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png">
-    <mat-card-content>
+    <mat-card-content routerLink="/view/{{listing.id}}">
         <div class="content-header">
             <div class="content-title">
                 <mat-card-title>{{listing.name}}</mat-card-title>
@@ -13,4 +13,7 @@
         </div>
         <div class="item-description">{{listing.description}}</div>
     </mat-card-content>
+    <mat-card-actions>
+        <button (click)="null">Fav</button>
+    </mat-card-actions>
 </mat-card>
