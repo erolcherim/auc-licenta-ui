@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { LoginComponent } from 'src/app/login/login.component';
@@ -16,7 +16,19 @@ export class ListingCardComponent {
   @Input()
   listing!:Listing;
 
-  favorited:boolean = false
+  @Input()
+  isFavorited?:boolean;
 
-  constructor(private favoriteService: FavoriteService){}
+  constructor(private favoriteService: FavoriteService){ }
+
+  addToFavorites(){
+    if (this.isFavorited==false){
+      this.favoriteService.addToFavorites(this.listing.id).subscribe()
+      this.isFavorited=true
+    }
+    else if (this.isFavorited==true){
+      this.favoriteService.removeFromFavorites(this.listing.id).subscribe()
+      this.isFavorited=false
+    }
+  }
 }

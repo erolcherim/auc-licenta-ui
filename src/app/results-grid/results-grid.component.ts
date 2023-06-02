@@ -3,6 +3,7 @@ import { tap} from 'rxjs';
 import { SearchService, re } from '../services/search.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Listing } from '../model/listing';
+import { FavoriteService } from '../services/favorite.service';
 
 @Component({
   selector: 'app-results-grid',
@@ -15,19 +16,20 @@ export class ResultsGridComponent implements OnInit, AfterViewInit{
   price: string = ""
   totalSearchResults?:number;
   pageSizePreview?:number = 5;
+  favoriteIds?:Array<String>
 
   @ViewChild(MatPaginator)
   paginator!:MatPaginator;
 
-  constructor(private service:SearchService) {}
+  constructor(private service:SearchService, private favoriteService:FavoriteService) {}
 
   ngOnInit(): void {
     this.service.currentMessage.subscribe(message => {
-      this.name = message[0]
+      this.name = message[0] 
       this.price = message[1]
       this.proceedSearch()
+      this.favoriteService.getFavoritesIds().subscribe(r => this.favoriteIds=r);
     })
-
   }
 
   ngAfterViewInit(): void {
@@ -93,5 +95,6 @@ export class ResultsGridComponent implements OnInit, AfterViewInit{
 
   pageChanged(event:any){
   }
+
 }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../services/search.service';
 
 @Component({
@@ -6,13 +6,13 @@ import { SearchService } from '../services/search.service';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent {
+export class SearchBarComponent implements OnInit{
   searchInput:string = ""
   searchInputPrice:string = ""
 
   constructor(private service:SearchService) {}
 
-  OnInit(){
+  ngOnInit(){
     this.service.currentMessage.subscribe(message => this.searchInput = message[0])
   }
 

@@ -3,6 +3,7 @@ import { Listing } from 'src/app/model/listing';
 import { FavoriteService } from 'src/app/services/favorite.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { tap } from 'rxjs';
+import { ListingCardComponent } from 'src/app/results-grid/listing-card/listing-card.component';
 
 @Component({
   selector: 'app-favorite-grid',
@@ -16,6 +17,8 @@ export class FavoriteGridComponent {
   @Input()
   noFavorites!:number
 
+  favoriteIds?:Array<String>
+
   @ViewChild(MatPaginator)
   paginator!:MatPaginator;
 
@@ -27,5 +30,7 @@ export class FavoriteGridComponent {
 
   constructor(private service:FavoriteService){ }
 
-
+  ngOnInit(){
+    this.service.getFavoritesIds().subscribe(r => this.favoriteIds=r);
+  }
 }

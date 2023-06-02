@@ -14,6 +14,6 @@
         <div class="item-description">{{listing.description}}</div>
     </mat-card-content>
     <mat-card-actions>
-        <button (click)="null">Fav</button>
+        <button mat-fab (click)="addToFavorites()" [ngClass]="isFavorited==false ? 'favorite-button' : 'favorite-button-selected'"><mat-icon>favorite</mat-icon></button>
     </mat-card-actions>
 </mat-card>

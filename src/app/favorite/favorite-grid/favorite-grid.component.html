@@ -1,6 +1,6 @@
 <div>
     <div class="grid" *ngFor="let item of favorites">
-        <app-listing-card [listing]="item" routerLink="/view/{{item.id}}"></app-listing-card>
+        <app-listing-card [listing]="item" [isFavorited]="favoriteIds?.includes(item.id)"></app-listing-card>
     </div>
     <mat-paginator [length]="noFavorites"
                  [pageSize]="5"

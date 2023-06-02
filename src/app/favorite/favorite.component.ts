@@ -25,7 +25,13 @@ export class FavoriteComponent implements OnInit {
   @ContentChild(MatPaginator)
   paginator!:MatPaginator ;
 
-  constructor(private service:FavoriteService, private searchService:SearchService){ }
+  constructor(private service:FavoriteService, private searchService:SearchService){ 
+  }
+
+  ngOnInit(): void {
+    this.service.getFavorites(0, 5).subscribe(r => {this.favorites=r.listings; this.noFavorites=r.noResults})
+    this.searchService.getListingsForCurrentUser(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.myListings=r.listings; this.noMyListings=r.noResults})
+  }
 
   childEvent(event:any){
     this.page = event[0]
@@ -33,11 +39,5 @@ export class FavoriteComponent implements OnInit {
     this.service.getFavorites(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.favorites=r.listings; this.noFavorites=r.noResults})
     this.searchService.getListingsForCurrentUser(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.myListings=r.listings; this.noMyListings=r.noResults})
     console.log(this.favorites.at(0)?.id)
-  }
-
-  ngOnInit(): void {
-    this.service.getFavorites(0, 5).subscribe(r => {this.favorites=r.listings; this.noFavorites=r.noResults})
-    this.searchService.getListingsForCurrentUser(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.myListings=r.listings; this.noMyListings=r.noResults})
-
   }
 }

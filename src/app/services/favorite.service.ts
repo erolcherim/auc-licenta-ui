@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { re } from './search.service';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,19 @@ export class FavoriteService {
       Authorization: `Bearer  ${localStorage.getItem('token')}`
     })
     return this.http.get<Array<string>>(this.apiurl+"/query-id", {headers: headers})
+  }
+
+  addToFavorites(id:string){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.put(this.apiurl+`/add/${id}`,'', {headers: headers})
+  }
+
+  removeFromFavorites(id:string){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.put(this.apiurl+`/remove/${id}`,'', {headers: headers})
   }
 }

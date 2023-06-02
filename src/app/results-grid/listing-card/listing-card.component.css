@@ -56,13 +56,13 @@ mat-card{
 }
 
 mat-card:hover{
-    background-color: aliceblue;
+    background-color: rgb(245, 245, 245);
     animation: colorIn 50ms;
     cursor:pointer;
 }
 @keyframes colorIn{
     from {background-color: white;}
-    to {background-color: rgb(244, 248, 252);}
+    to {background-color: rgb(245, 245, 245);}
 }
 
 mat-card-title{
@@ -88,4 +88,15 @@ mat-card-title{
     border-top-right-radius: 0px;
     border-bottom-left-radius: inherit;
 }
+
+.favorite-button{
+    color:lightgray;
+    background-color: white;
+}
+
+.favorite-button-selected{
+    color:red;
+    background-color: white;
+}
+
 
