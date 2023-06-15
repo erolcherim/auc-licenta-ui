@@ -73,6 +73,7 @@ mat-card-title{
 }
 
 .content-image{
+    aspect-ratio: 3/2;
     max-height: auto;
     max-width: 257px;
     object-fit: cover;
@@ -90,11 +91,17 @@ mat-card-title{
 }
 
 .favorite-button{
+    position: absolute;
+    bottom:10%;
+    right:0.5%;
     color:lightgray;
     background-color: white;
 }
 
 .favorite-button-selected{
+    position: absolute;
+    bottom:10%;
+    right:0.5%;
     color:red;
     background-color: white;
 }

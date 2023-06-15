@@ -11,11 +11,11 @@ export class ListingService {
 
   constructor(private http:HttpClient) { }
 
-  postListing(listing:any){
+  postListing(body:any){
     const headers = new HttpHeaders({
       Authorization: `Bearer  ${localStorage.getItem('token')}`
     })
-    return this.http.post(this.apiurl+"/", listing, {headers:headers})
+    return this.http.post(this.apiurl+"/", body, {headers:headers})
   }
 
   bidOnListing(id:string, bid:any){

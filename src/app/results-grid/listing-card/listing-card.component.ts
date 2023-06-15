@@ -12,14 +12,21 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './listing-card.component.html',
   styleUrls: ['./listing-card.component.css']
 })
-export class ListingCardComponent {
+export class ListingCardComponent implements OnInit{
   @Input()
   listing!:Listing;
 
   @Input()
   isFavorited?:boolean;
 
-  constructor(private favoriteService: FavoriteService){ }
+  isLoggedIn!:boolean;
+
+  constructor(private favoriteService: FavoriteService, private loginService:LoginService){ }
+  
+  ngOnInit(): void {
+    this.isLoggedIn = this.loginService.isLoggedIn();
+  }
+
 
   addToFavorites(){
     if (this.isFavorited==false){

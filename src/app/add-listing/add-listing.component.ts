@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ListingService } from '../services/listing.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-listing',
@@ -41,7 +42,12 @@ export class AddListingComponent {
         description: this.form.value.description
       }
 
-      this.service.postListing(listing).subscribe({
+      console.log()
+
+      var formData = new FormData();
+      formData.set("model",JSON.stringify(listing));
+
+      this.service.postListing(formData).subscribe({
         next:(r)=>{this.router.navigate(['home']).then(() => window.location.reload())}, //TODO get id and route there
         error:(e)=>(this._snackBar.open(e.error.response, "Dismiss", {
           duration: 2000

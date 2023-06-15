@@ -5,6 +5,9 @@
   <button *ngIf="isLoggedIn==true" mat-icon-button routerLink="favorites">
     <mat-icon>favorite</mat-icon>
   </button>
+  <button *ngIf="isLoggedIn==true" mat-icon-button routerLink="favorites">
+    <mat-icon>shopping_bag</mat-icon>
+  </button>
   <button *ngIf="isLoggedIn==false" mat-fab extended class="login-button" routerLink="login">Sign In</button>
   <span *ngIf="isLoggedIn==true" class="login-button">Balance: {{user?.balance}}</span>
   <button *ngIf="isLoggedIn==true" class="nav-bar-element" mat-fab extended routerLink="topup">TopUp</button>

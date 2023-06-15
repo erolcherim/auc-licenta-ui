@@ -1,5 +1,5 @@
 <mat-card>
-    <img mat-card-image class="content-image" src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png">
+    <img mat-card-image class="content-image" src="http://localhost:8080/api/v1/listing/image/{{listing.id}}">
     <mat-card-content routerLink="/view/{{listing.id}}">
         <div class="content-header">
             <div class="content-title">
@@ -12,8 +12,8 @@
             </div>
         </div>
         <div class="item-description">{{listing.description}}</div>
+        <button mat-fab *ngIf="isLoggedIn==true" (click)="addToFavorites()" [ngClass]="isFavorited==false ? 'favorite-button' : 'favorite-button-selected'"><mat-icon>favorite</mat-icon></button>
+
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-fab (click)="addToFavorites()" [ngClass]="isFavorited==false ? 'favorite-button' : 'favorite-button-selected'"><mat-icon>favorite</mat-icon></button>
-    </mat-card-actions>
+
 </mat-card>
