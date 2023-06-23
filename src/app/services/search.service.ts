@@ -52,6 +52,7 @@ export class SearchService {
       currentPrice: response.currentPrice,
       bids: response.bids,
       isActive: response.isActive,
+      hasImage:response.hasImage,
       createdDate: response.createdDate,
       activatedDate: response.activatedDate,
       expirationDate: response.expirationDate
@@ -67,6 +68,7 @@ export class SearchService {
       listings: data.listings
     })))
   }
+
 }
 
 

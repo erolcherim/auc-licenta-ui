@@ -17,6 +17,17 @@ export class AddListingComponent {
     description : new FormControl(),
   })
 
+  selectedFile:any;
+  imageSrc:any;
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] ?? null;
+    const reader = new FileReader();
+    reader.onload = e => this.imageSrc = reader.result;
+
+    reader.readAsDataURL(this.selectedFile);
+}
+
   constructor(private service:ListingService, private router:Router, private _snackBar:MatSnackBar){ }
 
 
@@ -46,6 +57,7 @@ export class AddListingComponent {
 
       var formData = new FormData();
       formData.set("model",JSON.stringify(listing));
+      formData.set("file", this.selectedFile);
 
       this.service.postListing(formData).subscribe({
         next:(r)=>{this.router.navigate(['home']).then(() => window.location.reload())}, //TODO get id and route there

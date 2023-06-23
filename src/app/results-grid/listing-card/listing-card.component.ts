@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 import { LoginComponent } from 'src/app/login/login.component';
 import { Listing } from 'src/app/model/listing';
 import { FavoriteService } from 'src/app/services/favorite.service';
+import { ListingService } from 'src/app/services/listing.service';
 import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -21,10 +22,22 @@ export class ListingCardComponent implements OnInit{
 
   isLoggedIn!:boolean;
 
-  constructor(private favoriteService: FavoriteService, private loginService:LoginService){ }
+  imageSrc!:any;
+
+  constructor(private favoriteService: FavoriteService, private loginService:LoginService, private listingService:ListingService){ }
   
   ngOnInit(): void {
     this.isLoggedIn = this.loginService.isLoggedIn();
+    if (this.listing.hasImage == true){
+      this.listingService.getListingImage(this.listing.id).subscribe({
+        next:(r)=>{
+          const reader = new FileReader();
+          reader.onload = e => this.imageSrc = reader.result;
+          reader.readAsDataURL(r);
+        },
+        error: (e) =>{ }
+      })
+    }
   }
 
 

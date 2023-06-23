@@ -9,7 +9,9 @@ export interface Listing{
     currentPrice:number;
     bids:Bid[];
     isActive:number;
+    hasImage:boolean;
     createdDate:Date;
     activatedDate:Date;
     expirationDate:Date;
+   
   }
