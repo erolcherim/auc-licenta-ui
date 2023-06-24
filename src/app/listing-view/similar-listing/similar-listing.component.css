@@ -1,0 +1,24 @@
+.similar-card{
+    display:flex;
+    max-width: 300px;
+    margin-right: 10px;
+}
+
+.similar-listing-image{
+    aspect-ratio: 3/2;
+    max-height: auto;
+    max-width: 250px;
+    min-width: 250px;
+    object-fit: cover;
+    padding-bottom: 0px;
+}
+
+mat-card:hover{
+    background-color: rgb(245, 245, 245);
+    animation: colorIn 50ms;
+    cursor:pointer;
+}
+
+mat-card-header{
+    padding-bottom: 16px;
+}

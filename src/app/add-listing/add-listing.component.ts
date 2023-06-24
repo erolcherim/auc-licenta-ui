@@ -14,7 +14,7 @@ export class AddListingComponent {
   form = new FormGroup({
     name : new FormControl('',[Validators.required, Validators.minLength(5)]),
     startingPrice : new FormControl('', [Validators.required, Validators.pattern("^(?:[1-9][0-9]{0,5})$")]),
-    description : new FormControl(),
+    description : new FormControl('', [Validators.maxLength(1000)]),
   })
 
   selectedFile:any;
@@ -26,7 +26,12 @@ export class AddListingComponent {
     reader.onload = e => this.imageSrc = reader.result;
 
     reader.readAsDataURL(this.selectedFile);
-}
+  }
+
+  clearFileSelected(): void{
+    this.imageSrc=null;
+    this.selectedFile=null;
+  }
 
   constructor(private service:ListingService, private router:Router, private _snackBar:MatSnackBar){ }
 
@@ -43,6 +48,13 @@ export class AddListingComponent {
       return 'You must enter a value';
     }
     return this.form.controls['startingPrice'].hasError('pattern') ? 'Price must an integer (no decimals) and at least 1' : '';
+  }
+
+  getErrorDescription(){
+    if (this.form.controls['description'].hasError('maxlength')){
+      return "Description must not exceed 1000 characters"
+    }
+    else return ''
   }
 
   proceedAddListing(){

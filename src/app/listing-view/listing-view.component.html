@@ -1,37 +1,42 @@
-<div class="container">
-    <mat-card class="example-card">
-        <mat-card-header>
-        <mat-card-title>{{listing?.name}}</mat-card-title>
-        <mat-card-subtitle>Posted {{listing?.activatedDate | date: 'dd MMM'}} at {{listing?.activatedDate | date: 'HH mm'}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-title>
-            {{listing?.currentPrice}}
-        </mat-card-title>
-    </mat-card>
-    <div class="bid-input" *ngIf="listing?.isActive==1">
-        <mat-form-field>
-            <mat-label>Bid on listing</mat-label>
-            <input matInput type="number" placeholder="Min {{suggestedBidAmount}}" [formControl]="bidAmount">
-        </mat-form-field>
-        <button mat-fab extended (click)="proceedBid()">Bid</button>
-        <app-bid-grid [bids]="listing?.bids!"></app-bid-grid>
+<div class="listing-view">
+    <div class="main-listing-wrapper">
+        <mat-card class="product-card">
+            <mat-card-header>
+            <mat-card-title>{{listing?.name}}</mat-card-title>
+            <mat-card-subtitle>Posted {{listing?.activatedDate | date: 'dd MMM'}} at {{listing?.activatedDate | date: 'HH:mm'}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="this.imageSrc!=null ? this.imageSrc : '/assets/placeholder-image.png'">
+            <mat-card-content><b>Description:</b> {{listing?.description}}</mat-card-content>
+        </mat-card>
+        <div class="bid-price-wrapper">
+            <div class="price-wrapper">
+                <div class="price-categories">
+                    <div id="current-price">Current price </div>
+                    <div id="starting-price">Auction starting price</div>
+                </div>
+                <div class="price-values">
+                    <div id="current-price">{{listing?.currentPrice}}</div>
+                    <div id="starting-price-value">{{listing?.startingPrice}}</div>
+                </div>
+            </div>
+            <div class="bid-input" *ngIf="listing?.isActive==1">
+                <mat-form-field>
+                    <mat-label>Bid on listing</mat-label>
+                    <input matInput type="number" placeholder="Min {{suggestedBidAmount}}" [formControl]="bidAmount">
+                </mat-form-field>
+                <button mat-fab extended (click)="proceedBid()">Bid</button>
+                <app-bid-grid [bids]="listing?.bids!"></app-bid-grid>
+            </div>
+        </div>
     </div>
 
-</div>
-{{listing?.description}}
-<div class="similar" >
-    <mat-card class="similar-card" *ngFor="let item of similarListings" routerLink="/view/{{item.id}}">
-        <mat-card-header>
-        <mat-card-title>{{item?.name}}</mat-card-title>
-        <mat-card-subtitle>{{item?.activatedDate}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-title>
-            {{item?.currentPrice}}
-        </mat-card-title>
-    </mat-card>
-    <button mat-fab class="add-button" routerLink="/add"><mat-icon>add</mat-icon></button>
+    <div class="suggestions-wrapper">
+        <div id="suggested-text">You may also like</div>
+        <div class="similar">
+            <app-similar-listing *ngFor="let item of similarListings" [listing]="item"></app-similar-listing>
+            <button mat-fab class="add-bid-button" routerLink="/add"><mat-icon>add</mat-icon></button>
+        </div>
+    </div>
 </div>
 
 

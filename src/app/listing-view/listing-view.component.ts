@@ -22,7 +22,8 @@ export class ListingViewComponent implements OnInit{
   bids!:Array<any>
   similarListings?:Array<Listing>;
   listingName!:string;
-  suggestedBidAmount:number = 0
+  suggestedBidAmount:number = 0;
+  imageSrc:any;
 
   bidAmount = new FormControl('', [Validators.required])
 
@@ -40,11 +41,28 @@ export class ListingViewComponent implements OnInit{
         page:0,
         pageSize:5
       }
-      this.service.getListingsWithNameAndPrice(requestBody).subscribe(r => 
-        this.similarListings = r.listings
+      this.service.getListingsWithNameAndPrice(requestBody).subscribe(r => {
+          this.similarListings = r.listings
+          this.similarListings.splice(0,1)
+        }
+
       )
       this.suggestedBidAmount = Math.ceil(0.1*this.listing.startingPrice) + this.listing.currentPrice
+      this.getImage(this.listing)
     })
+  }
+
+  getImage(listing:Listing){
+    if (listing.hasImage == true){
+      this.listingService.getListingImage(listing.id).subscribe({
+        next:(r)=>{
+          const reader = new FileReader();
+          reader.onload = e => this.imageSrc = reader.result;
+          reader.readAsDataURL(r);
+        },
+        error: (e) =>{ }
+      })
+    }
   }
 
   proceedBid(){

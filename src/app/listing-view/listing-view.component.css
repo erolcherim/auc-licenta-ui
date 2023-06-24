@@ -1,15 +1,63 @@
-.example-card {
-    max-width: 400px;
-  }
-  
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+.listing-view{
+  margin: auto;
+  min-width: 1000px;
+  max-width: 1200px;
+  padding: 30px;
+}
+
+.product-card {
+    width: 700px;
     background-size: cover;
 }
 
-.container{
+.bid-price-wrapper{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin-left: 50px;
+}
+
+mat-card-header{
+  padding-bottom: 16px;
+}
+
+mat-card-content{
+  padding-left:10px;
+  padding-top:5px;
+  font-size:14px;
+}
+
+#suggested-text{
+  font-size:24px;
+  padding-bottom: 16px;
+}
+
+.price-wrapper{
   display: flex;
   flex-direction: row;
+  padding-bottom:16px;
+}
+
+.price-values{
+  margin-left: auto;
+}
+
+#current-price{
+  font-size: 24px;
+}
+
+#starting-price{
+  font-size:12px;
+}
+
+#starting-price-value{
+  text-align: right;
+}
+  
+.main-listing-wrapper{
+  display: flex;
+  flex-direction: row;
+  padding-bottom:70px;
 }
 
 app-bid-grid{
@@ -21,12 +69,7 @@ app-bid-grid{
   flex-direction: row;
 }
 
-.similar-card{
-  display:flex;
-  max-width: 200px;
-}
-
-.add-button{
+.add-bid-button{
   width:80px;
   height: 80px;
   position: fixed;

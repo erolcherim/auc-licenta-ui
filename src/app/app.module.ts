@@ -31,6 +31,7 @@ import { FavoriteGridComponent } from './favorite/favorite-grid/favorite-grid.co
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AddListingComponent } from './add-listing/add-listing.component';
+import { SimilarListingComponent } from './listing-view/similar-listing/similar-listing.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AddListingComponent } from './add-listing/add-listing.component';
     FavoriteComponent,
     FavoriteGridComponent,
     AddListingComponent,
+    SimilarListingComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<mat-card class="similar-card" routerLink="/view/{{listing.id}}">
+    <mat-card-header>
+    <mat-card-title>{{listing.name}}</mat-card-title>
+    <mat-card-subtitle>{{listing.activatedDate | date: 'dd MMM'}} at {{listing.activatedDate | date: 'HH:mm'}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image class="similar-listing-image" [src]="this.imageSrc!=null ? this.imageSrc : '/assets/placeholder-image.png'">
+    <mat-card-header>
+        {{listing.currentPrice}}
+    </mat-card-header>
+</mat-card>
