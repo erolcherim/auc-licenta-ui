@@ -1,4 +1,14 @@
 <div class="listing-view">
+    <mat-card class="warning-wrapper">
+        <mat-card-header class="warning-header">
+            <mat-card-title id="warning-text">This is not yet active and will become visible to other users in {{timeUntillActivation}} minutes. In the meantime, feel free to modify any details or delete it. 
+                After activation, you will not be able to delete or edit the listing.</mat-card-title>
+            </mat-card-header>
+        <mat-card-actions>
+            <button class="warning-button" mat-button>EDIT</button>
+            <button class="warning-button" mat-button>DELETE</button>
+        </mat-card-actions>
+    </mat-card>
     <div class="main-listing-wrapper">
         <mat-card class="product-card">
             <mat-card-header>

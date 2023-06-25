@@ -24,6 +24,7 @@ export class ListingViewComponent implements OnInit{
   listingName!:string;
   suggestedBidAmount:number = 0;
   imageSrc:any;
+  timeUntillActivation?:number;
 
   bidAmount = new FormControl('', [Validators.required])
 
@@ -49,6 +50,11 @@ export class ListingViewComponent implements OnInit{
       )
       this.suggestedBidAmount = Math.ceil(0.1*this.listing.startingPrice) + this.listing.currentPrice
       this.getImage(this.listing)
+      let td = new Date(this.listing.createdDate);
+      let tn = Date.now();
+      if(this.listing.isActive==0){
+        this.timeUntillActivation=Math.floor((td.getTime()+30*1000*60-tn)/1000/60);
+      }
     })
   }
 
