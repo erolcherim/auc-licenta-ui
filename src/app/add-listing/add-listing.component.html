@@ -1,6 +1,6 @@
 <div class="add-listing-container">
     <p>Add listing</p>
-    <img class="listing-preivew-image" [src]="imageSrc">
+    <img class="listing-preview-image" [src]="imageSrc">
     <button *ngIf="this.selectedFile==null" type="button" id="add-image-button" mat-fab extended (click)="fileInput.click()">Upload Image</button>
     <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="image/*">
     <!-- <span class="file-name">{{selectedFile?.name}}</span>       -->
@@ -18,7 +18,7 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" placeholder="slightly used, still works"></textarea>
+        <textarea matInput class="description-textarea" formControlName="description" placeholder="slightly used, still works"></textarea>
         <mat-error>{{getErrorDescription()}}</mat-error>
     </mat-form-field>
 </form>

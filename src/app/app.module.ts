@@ -32,6 +32,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AddListingComponent } from './add-listing/add-listing.component';
 import { SimilarListingComponent } from './listing-view/similar-listing/similar-listing.component';
+import { DeleteListingComponent } from './listing-view/delete-listing/delete-listing.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditListingComponent } from './listing-view/edit-listing/edit-listing.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,8 @@ import { SimilarListingComponent } from './listing-view/similar-listing/similar-
     FavoriteGridComponent,
     AddListingComponent,
     SimilarListingComponent,
+    DeleteListingComponent,
+    EditListingComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,8 @@ import { SimilarListingComponent } from './listing-view/similar-listing/similar-
     ReactiveFormsModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

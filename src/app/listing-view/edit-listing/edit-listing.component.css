@@ -1,13 +1,9 @@
 :host{
     display: flex;
-    width: 400px;
+    width: 500px;
     margin: auto;
     flex-direction: column;
-    border-radius: 20px;
-    background-color:white;
-    padding: 50px;
-    box-shadow: 0px 0px 10.5px rgba(0,0,0, 0.3);
-    margin-top: 1%;
+    padding: 20px;
 }
 
 mat-form-field{
@@ -23,17 +19,19 @@ mat-form-field{
     padding-bottom: 0px;
 }
 
-.buttons{
-    display:flex;
-    flex-direction: row;
-    width: 100%;
+.dialog-button{
+    transform:scale(1.1);
+    margin-right: 18px;
+    margin-bottom: 8px;
 }
 
-#add-button{
+.dialog-button:first-child{
+    margin-left: auto;
+}
+
+.dialog-button:last-child{
     color:white;
-    background-color:#3F51B5;
-    width:48%;
-    margin:auto;
+    background-color: #3F51B5;
 }
 
 #add-image-button{
@@ -42,8 +40,4 @@ mat-form-field{
     width:38%;
     margin-bottom: 20px;
     margin-left:auto;
-}
-
-.description-textarea{
-    white-space: pre-wrap;
 }

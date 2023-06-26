@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ListingService } from '../services/listing.service';
-import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Listing } from 'src/app/model/listing';
+import { ListingService } from 'src/app/services/listing.service';
 
 @Component({
-  selector: 'app-add-listing',
-  templateUrl: './add-listing.component.html',
-  styleUrls: ['./add-listing.component.css']
+  selector: 'app-edit-listing',
+  templateUrl: './edit-listing.component.html',
+  styleUrls: ['./edit-listing.component.css']
 })
-export class AddListingComponent {
+export class EditListingComponent implements OnInit{
   form = new FormGroup({
     name : new FormControl('',[Validators.required, Validators.minLength(5)]),
     startingPrice : new FormControl('', [Validators.required, Validators.pattern("^(?:[1-9][0-9]{0,5})$")]),
@@ -19,6 +20,13 @@ export class AddListingComponent {
 
   selectedFile:any;
   imageSrc:any;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private listingService:ListingService, private _snackBar:MatSnackBar, private router:Router){}
+
+  ngOnInit(): void {
+    this.imageSrc=this.data.imageSrc;
+    this.selectedFile = "dummy value";
+  }
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0] ?? null;
@@ -32,9 +40,6 @@ export class AddListingComponent {
     this.imageSrc=null;
     this.selectedFile=null;
   }
-
-  constructor(private service:ListingService, private router:Router, private _snackBar:MatSnackBar){ }
-
 
   getErrorName(){
     if (this.form.controls['name'].hasError('required')){
@@ -69,8 +74,8 @@ export class AddListingComponent {
       formData.set("model",JSON.stringify(listing));
       formData.set("file", this.selectedFile);
 
-      this.service.postListing(formData).subscribe({
-        next:(r)=>{this.router.navigate(['home']).then(() => window.location.reload())}, //TODO get id and route there
+      this.listingService.editListing(formData, this.data.id).subscribe({
+        next:(r)=>{window.location.reload()}, //TODO get id and route there
         error:(e)=>(this._snackBar.open(e.error.response, "Dismiss", {
           duration: 2000
         }))

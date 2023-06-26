@@ -9,6 +9,9 @@ import { ListingService, SingleResponse } from '../services/listing.service';
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteListingComponent } from './delete-listing/delete-listing.component';
+import { EditListingComponent } from './edit-listing/edit-listing.component';
 
 @Component({
   selector: 'app-listing-view',
@@ -28,7 +31,7 @@ export class ListingViewComponent implements OnInit{
 
   bidAmount = new FormControl('', [Validators.required])
 
-  constructor(private service:SearchService, private listingService:ListingService, private route:ActivatedRoute, private router:Router, private _snackBar:MatSnackBar) {
+  constructor(private service:SearchService, private listingService:ListingService, private route:ActivatedRoute, private router:Router, private _snackBar:MatSnackBar, public dialog:MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
@@ -87,4 +90,40 @@ export class ListingViewComponent implements OnInit{
     }
     );
   }
+
+  openDeleteDialog(){
+    const dialogRef=this.dialog.open(DeleteListingComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result=="true"){
+        this.proceedDeleteListing(this.listingId);
+      }
+    })
+  }
+
+  openEditDialog(){
+    const dialogRef=this.dialog.open(EditListingComponent, {
+      data:{
+        id: this.listingId,
+        imageSrc:this.imageSrc,
+        name:this.listing?.name,
+        startingPrice:this.listing?.startingPrice,
+        description:this.listing?.description
+      }
+    });
+  }
+
+  proceedDeleteListing(id:any){
+    this.listingService.deleteListing(id).subscribe({
+    next: (r:SingleResponse) => {
+      this.router.navigate(['home']).then(()=>window.location.reload())
+    },
+    error: (e) => {
+      this._snackBar.open(e.error.response, "Dismiss", {
+        duration:2000
+      })
+    }
+    })
+  }
+
 }

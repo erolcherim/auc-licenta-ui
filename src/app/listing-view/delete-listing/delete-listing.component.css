@@ -1,0 +1,14 @@
+.dialog-button{
+    transform:scale(1.1);
+    margin-right: 18px;
+    margin-bottom: 8px;
+}
+
+.dialog-button:first-child{
+    margin-left: auto;
+}
+
+.dialog-button:last-child{
+    color:white;
+    background-color: red;
+}

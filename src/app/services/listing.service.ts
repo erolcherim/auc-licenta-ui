@@ -30,6 +30,22 @@ export class ListingService {
   getListingImage(id:any)  : Observable<Blob>{
     return this.http.get(this.apiurl+`/image/${id}`, {responseType:'blob'});
   }
+
+  deleteListing(id:any){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.delete<SingleResponse>(this.apiurl+`/${id}`, {headers:headers}).pipe(map((r:SingleResponse)=>({
+      response:r.response
+    })))
+  }
+
+  editListing(body:any, id:any){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.put(this.apiurl+`/${id}`, body, {headers:headers})
+  }
 }
 
 export interface SingleResponse{

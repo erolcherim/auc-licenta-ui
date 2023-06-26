@@ -1,22 +1,22 @@
 <div class="listing-view">
-    <mat-card class="warning-wrapper">
+    <mat-card *ngIf="this.listing?.isActive==0" class="warning-wrapper">
         <mat-card-header class="warning-header">
-            <mat-card-title id="warning-text">This is not yet active and will become visible to other users in {{timeUntillActivation}} minutes. In the meantime, feel free to modify any details or delete it. 
-                After activation, you will not be able to delete or edit the listing.</mat-card-title>
+            <mat-card-content id="warning-text">This listing is not yet active and will become visible to other users in {{timeUntillActivation}} minutes. In the meantime, feel free to modify any details or delete it. 
+                After activation, you will not be able to delete or edit the listing.</mat-card-content>
             </mat-card-header>
         <mat-card-actions>
-            <button class="warning-button" mat-button>EDIT</button>
-            <button class="warning-button" mat-button>DELETE</button>
+            <button class="warning-button" mat-button (click)="openEditDialog()">EDIT</button>
+            <button class="warning-button" mat-button (click)="openDeleteDialog()">DELETE</button>
         </mat-card-actions>
     </mat-card>
     <div class="main-listing-wrapper">
         <mat-card class="product-card">
-            <mat-card-header>
+            <mat-card-header class="product-card-text">
             <mat-card-title>{{listing?.name}}</mat-card-title>
             <mat-card-subtitle>Posted {{listing?.activatedDate | date: 'dd MMM'}} at {{listing?.activatedDate | date: 'HH:mm'}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image [src]="this.imageSrc!=null ? this.imageSrc : '/assets/placeholder-image.png'">
-            <mat-card-content><b>Description:</b> {{listing?.description}}</mat-card-content>
+            <img mat-card-image class="listing-image" [src]="this.imageSrc!=null ? this.imageSrc : '/assets/placeholder-image.png'">
+            <mat-card-content class="product-card-text"><div><b>Description:</b> {{listing?.description}}</div><div><b>Posted by:</b> {{listing?.userId}}</div></mat-card-content>
         </mat-card>
         <div class="bid-price-wrapper">
             <div class="price-wrapper">
@@ -41,7 +41,8 @@
     </div>
 
     <div class="suggestions-wrapper">
-        <div id="suggested-text">You may also like</div>
+        <div *ngIf="this.similarListings?.length!=0" id="suggested-text">You may also like</div>
+        <div *ngIf="this.similarListings?.length==0" id="suggested-text">There are no similar listings</div>
         <div class="similar">
             <app-similar-listing *ngFor="let item of similarListings" [listing]="item"></app-similar-listing>
             <button mat-fab class="add-bid-button" routerLink="/add"><mat-icon>add</mat-icon></button>

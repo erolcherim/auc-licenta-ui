@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Edit Listing</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form">  
+        <img class="listing-preview-image" [src]="imageSrc">
+        <button *ngIf="this.selectedFile==null" type="button" id="add-image-button" mat-fab extended (click)="fileInput.click()">Upload Image</button>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="image/*">
+        <button *ngIf="this.selectedFile!=null" type="button" id="add-image-button" mat-fab extended (click)="clearFileSelected()">Clear Image</button>
+        <mat-form-field>
+            <mat-label>Listing name</mat-label>
+            <input matInput formControlName="name" placeholder="Red umbrella" required>
+            <mat-error>{{getErrorName()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Starting price</mat-label>
+            <input type="number" formControlName="startingPrice"  matInput placeholder="1" required>
+            <mat-error>{{getErrorStartingPrice()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" placeholder="slightly used, still works"></textarea>
+            <mat-error>{{getErrorDescription()}}</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button class="dialog-button" mat-button mat-dialog-close="false">CANCEL</button>
+    <button class="dialog-button" mat-button mat-dialog-close="true" (click)="proceedAddListing()" cdkFocusInitial>EDIT</button>
+</div>

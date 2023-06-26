@@ -15,7 +15,7 @@ export class FavoriteComponent implements OnInit {
   //input arrays
   favorites!:Array<Listing>
   myListings!:Array<Listing>
-  //input totalElements(different from array.size() because array is always < pageSize, is returned from repository query.etTotalElements())
+  //input totalElements(different from array.size() because array is always < pageSize, is returned from repository query.getTotalElements())
   noFavorites!:number
   noMyListings!:number
 
@@ -29,8 +29,7 @@ export class FavoriteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getFavorites(0, 5).subscribe(r => {this.favorites=r.listings; this.noFavorites=r.noResults})
-    this.searchService.getListingsForCurrentUser(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.myListings=r.listings; this.noMyListings=r.noResults})
+    this.populateGrid();
   }
 
   childEvent(event:any){
@@ -39,5 +38,10 @@ export class FavoriteComponent implements OnInit {
     this.service.getFavorites(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.favorites=r.listings; this.noFavorites=r.noResults})
     this.searchService.getListingsForCurrentUser(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.myListings=r.listings; this.noMyListings=r.noResults})
     console.log(this.favorites.at(0)?.id)
+  }
+
+  populateGrid(){
+    this.service.getFavorites(0, 5).subscribe(r => {this.favorites=r.listings; this.noFavorites=r.noResults})
+    this.searchService.getListingsForCurrentUser(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.myListings=r.listings; this.noMyListings=r.noResults})
   }
 }
