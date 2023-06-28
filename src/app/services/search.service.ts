@@ -69,6 +69,13 @@ export class SearchService {
     })))
   }
 
+  getRecommended(requestBody:any){
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.post(this.apiurl+"/recommended", requestBody, {headers:headers});
+  }
+
 }
 
 

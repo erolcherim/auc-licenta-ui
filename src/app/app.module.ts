@@ -35,6 +35,7 @@ import { SimilarListingComponent } from './listing-view/similar-listing/similar-
 import { DeleteListingComponent } from './listing-view/delete-listing/delete-listing.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditListingComponent } from './listing-view/edit-listing/edit-listing.component';
+import { ShoppingAsistantComponent } from './shopping-asistant/shopping-asistant.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { EditListingComponent } from './listing-view/edit-listing/edit-listing.c
     SimilarListingComponent,
     DeleteListingComponent,
     EditListingComponent,
+    ShoppingAsistantComponent,
   ],
   imports: [
     BrowserModule,

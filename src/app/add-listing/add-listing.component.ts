@@ -35,7 +35,6 @@ export class AddListingComponent {
 
   constructor(private service:ListingService, private router:Router, private _snackBar:MatSnackBar){ }
 
-
   getErrorName(){
     if (this.form.controls['name'].hasError('required')){
       return 'You must enter a value';

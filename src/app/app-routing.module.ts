@@ -7,6 +7,7 @@ import { TopupComponent } from './topup/topup.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { RegisterComponent } from './register/register.component';
 import { AddListingComponent } from './add-listing/add-listing.component';
+import { ShoppingAsistantComponent } from './shopping-asistant/shopping-asistant.component';
 
 const routes: Routes = [
   {path:"home", component: HomePageComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:"topup", component: TopupComponent},
   {path:"favorites", component:FavoriteComponent},
   {path:"register", component:RegisterComponent},
-  {path:"add", component:AddListingComponent}
+  {path:"add", component:AddListingComponent},
+  {path:"assistant", component:ShoppingAsistantComponent}
 ];
 
 @NgModule({
