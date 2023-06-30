@@ -73,7 +73,7 @@ export class SearchService {
     const headers = new HttpHeaders({
       Authorization: `Bearer  ${localStorage.getItem('token')}`
     })
-    return this.http.post(this.apiurl+"/recommended", requestBody, {headers:headers});
+    return this.http.post<Array<Listing>>(this.apiurl+"/recommended", requestBody, {headers:headers});
   }
 
 }

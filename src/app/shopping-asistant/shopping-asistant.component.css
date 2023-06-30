@@ -1,0 +1,53 @@
+:host{
+    display: flex;
+    width: 800px;
+    margin: auto;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color:white;
+    padding: 50px;
+    box-shadow: 0px 0px 10.5px rgba(0,0,0, 0.3);
+    margin-top: 1%;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.recommendations{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.listing-preview-image{
+    aspect-ratio: 3/2;
+    max-height: 400px;
+    max-width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    padding-bottom: 0px;
+}
+
+.buttons{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#proceed-button{
+    color:white;
+    background-color:#3F51B5;
+    width:48%;
+    margin:auto;
+}
+
+.text{
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.text:first-child{
+    margin-top: 0px;
+}

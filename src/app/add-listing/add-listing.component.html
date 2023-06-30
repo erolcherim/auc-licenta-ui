@@ -1,5 +1,5 @@
 <div class="add-listing-container">
-    <p>Add listing</p>
+    <div class="text">Add listing</div>
     <img class="listing-preview-image" [src]="imageSrc">
     <button *ngIf="this.selectedFile==null" type="button" id="add-image-button" mat-fab extended (click)="fileInput.click()">Upload Image</button>
     <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="image/*">

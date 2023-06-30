@@ -47,3 +47,8 @@ mat-form-field{
 .description-textarea{
     white-space: pre-wrap;
 }
+
+.text{
+    font-size: 24px;
+    margin-bottom: 30px;
+}

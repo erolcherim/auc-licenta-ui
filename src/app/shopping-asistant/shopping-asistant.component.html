@@ -1,3 +1,4 @@
+<div class="text">Shopping Assistant</div>
 <form [formGroup]="form">  
     <mat-form-field>
         <mat-label>Search terms</mat-label>
@@ -5,14 +6,16 @@
         <mat-error>{{getErrorSearchTerms()}}</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <mat-label>Starting price</mat-label>
+        <mat-label>Budget</mat-label>
         <input type="number" formControlName="budget"  matInput placeholder="300" required>
         <mat-error>{{getErrorBudget()}}</mat-error>
     </mat-form-field>
 </form>
 <div class = "buttons">
-    <button mat-fab extended id="add-button" (click)="proceedSearchRecommended()">Add</button>
+    <button mat-fab extended id="proceed-button" (click)="proceedSearchRecommended()">Recommend Me</button>
 </div>
+<div class="text" *ngIf="searched && recommendedListings$?.length==0">There are no recommendations available</div>
+<div class="text" *ngIf="searched && recommendedListings$?.length!=0">Here are some recommended listings</div>
 <div class = "recommendations" >
     <app-similar-listing *ngFor = "let item of recommendedListings$" [listing]="item"></app-similar-listing>
 </div>
