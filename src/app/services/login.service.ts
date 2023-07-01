@@ -9,7 +9,8 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-  readonly apiurl = "http://localhost:8080/api/v1/auth"
+  readonly apiurl = "https://api-licentaec.ngrok.app/api/v1/auth"
+  // readonly apiurl = "https://localhost:8080/api/v1/auth"
 
   proceedLogin(user:any) : Observable<AuthResponse>{
     return this.http.post<AuthResponse>(this.apiurl+"/authenticate", user).pipe(map((r:AuthResponse)=>({

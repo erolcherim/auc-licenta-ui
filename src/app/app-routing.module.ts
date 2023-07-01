@@ -18,7 +18,8 @@ const routes: Routes = [
   {path:"favorites", component:FavoriteComponent, canActivate:[authGuard]},
   {path:"register", component:RegisterComponent},
   {path:"add", component:AddListingComponent, canActivate:[authGuard]},
-  {path:"assistant", component:ShoppingAsistantComponent, canActivate:[authGuard]}
+  {path:"assistant", component:ShoppingAsistantComponent, canActivate:[authGuard]},
+  {path:"", redirectTo:"home", pathMatch:"full"}
 ];
 
 @NgModule({

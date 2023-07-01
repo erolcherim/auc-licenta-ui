@@ -7,7 +7,8 @@ import { Observable, map } from 'rxjs';
 })
 export class ListingService {
   
-  readonly apiurl = "http://localhost:8080/api/v1/listing"
+  readonly apiurl = "https://api-licentaec.ngrok.app/api/v1/listing"
+  // readonly apiurl = "https://localhost:8080/api/v1/listing"
 
   constructor(private http:HttpClient) { }
 

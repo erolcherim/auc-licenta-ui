@@ -8,7 +8,9 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
 })
 export class FavoriteService {
   
-  readonly apiurl = "http://localhost:8080/api/v1/favorite"
+  readonly apiurl = "https://api-licentaec.ngrok.app/api/v1/favorite"
+  // readonly apiurl = "https://localhost:8080/api/v1/favorite"
+
   
   constructor(private http:HttpClient) { }
 

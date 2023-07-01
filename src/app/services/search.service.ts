@@ -13,7 +13,8 @@ export class SearchService {
   private messageSource = new BehaviorSubject<Array<string>>(["",""]);
   currentMessage = this.messageSource.asObservable();
 
-  readonly apiurl = "http://localhost:8080/api/v1/listing/search"
+  readonly apiurl = "https://api-licentaec.ngrok.app/api/v1/listing/search"
+  // readonly apiurl = "https://localhost:8080/api/v1/listing/search"
 
   constructor(private http : HttpClient) { }
 

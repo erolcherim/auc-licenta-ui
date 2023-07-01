@@ -9,7 +9,8 @@ export class UserService{
   
   constructor(private http:HttpClient) { }
 
-  readonly apiurl = "http://localhost:8080/api/v1/user"
+  readonly apiurl = "https://api-licentaec.ngrok.app/api/v1/user"
+  // readonly apiurl = "https://localhost:8080/api/v1/user"
 
   getUser() : Observable<User>{
     const headers = new HttpHeaders({
