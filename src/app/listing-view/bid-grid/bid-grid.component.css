@@ -1,6 +1,19 @@
 mat-grid-tile{
     background-color: lightgray;
-  }
+}
+
+.tile-content{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.tile-content > p {
+    width: 100px;
+    text-align: center;
+}
+
 mat-grid-tile:nth-child(odd){
     background-color:darkgray
 }

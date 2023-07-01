@@ -1,9 +1,12 @@
 <div class="app-favorites">
     <mat-tab-group>
-        <mat-tab label="Favorites">
+        <mat-tab label="My Favorites">
             <app-favorite-grid (notifyPagingChanges)="childEvent($event)" [favorites]="favorites" [noFavorites]="noFavorites"></app-favorite-grid>
         </mat-tab>
-        <mat-tab label="My Listings">
+        <mat-tab label="My Won Listings">
+            <app-favorite-grid (notifyPagingChanges)="childEvent($event)" [favorites]="wonListing" [noFavorites]="noWonListings"></app-favorite-grid>
+        </mat-tab>
+        <mat-tab label="My Created Listings">
             <app-favorite-grid (notifyPagingChanges)="childEvent($event)" [favorites]="myListings" [noFavorites]="noMyListings"></app-favorite-grid>
         </mat-tab>
     </mat-tab-group>

@@ -15,9 +15,11 @@ export class FavoriteComponent implements OnInit {
   //input arrays
   favorites!:Array<Listing>
   myListings!:Array<Listing>
+  wonListing!:Array<Listing>
   //input totalElements(different from array.size() because array is always < pageSize, is returned from repository query.getTotalElements())
   noFavorites!:number
   noMyListings!:number
+  noWonListings!:number
 
   page?:number = 0;
   pageSizePreview?:number = 5;
@@ -43,5 +45,6 @@ export class FavoriteComponent implements OnInit {
   populateGrid(){
     this.service.getFavorites(0, 5).subscribe(r => {this.favorites=r.listings; this.noFavorites=r.noResults})
     this.searchService.getListingsForCurrentUser(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.myListings=r.listings; this.noMyListings=r.noResults})
+    this.service.getWon(this.page!, this.pageSizePreview!).subscribe((r:re) => {this.wonListing=r.listings; this.noWonListings=r.noResults})
   }
 }

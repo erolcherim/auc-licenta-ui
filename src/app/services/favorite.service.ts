@@ -16,7 +16,17 @@ export class FavoriteService {
     const headers = new HttpHeaders({
       Authorization: `Bearer  ${localStorage.getItem('token')}`
     })
-    return this.http.get<any>(this.apiurl+"/query", {headers: headers, params: {"page":page, "pageSize":pageSize}}).pipe(map((data:re)=>({
+    return this.http.get<any>(this.apiurl+"/", {headers: headers, params: {"page":page, "pageSize":pageSize}}).pipe(map((data:re)=>({
+      noResults: data.noResults,
+      listings: data.listings
+    })))
+  }
+
+  getWon(page:number, pageSize:number) : Observable<re> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer  ${localStorage.getItem('token')}`
+    })
+    return this.http.get<any>(this.apiurl+"/won", {headers: headers, params: {"page":page, "pageSize":pageSize}}).pipe(map((data:re)=>({
       noResults: data.noResults,
       listings: data.listings
     })))
@@ -26,7 +36,7 @@ export class FavoriteService {
     const headers = new HttpHeaders({
       Authorization: `Bearer  ${localStorage.getItem('token')}`
     })
-    return this.http.get<Array<string>>(this.apiurl+"/query-id", {headers: headers})
+    return this.http.get<Array<string>>(this.apiurl+"/ids", {headers: headers})
   }
 
   addToFavorites(id:string){

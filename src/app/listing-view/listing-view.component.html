@@ -13,7 +13,8 @@
         <mat-card class="product-card">
             <mat-card-header class="product-card-text">
             <mat-card-title>{{listing?.name}}</mat-card-title>
-            <mat-card-subtitle>Posted {{listing?.activatedDate | date: 'dd MMM'}} at {{listing?.activatedDate | date: 'HH:mm'}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="listing?.isActive!=0">Activated {{listing?.activatedDate | date: 'dd MMM'}} at {{listing?.activatedDate | date: 'HH:mm'}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="listing?.isActive==0">Posted {{listing?.activatedDate | date: 'dd MMM'}} at {{listing?.activatedDate | date: 'HH:mm'}}</mat-card-subtitle>
             </mat-card-header>
             <img mat-card-image class="listing-image" [src]="this.imageSrc!=null ? this.imageSrc : '/assets/placeholder-image.png'">
             <mat-card-content class="product-card-text"><div><b>Description:</b> {{listing?.description}}</div><div><b>Posted by:</b> {{listing?.userId}}</div></mat-card-content>
@@ -21,7 +22,8 @@
         <div class="bid-price-wrapper">
             <div class="price-wrapper">
                 <div class="price-categories">
-                    <div id="current-price">Current price </div>
+                    <div id="current-price" *ngIf="listing?.isActive!=2">Current price </div>
+                    <div id="current-price" *ngIf="listing?.isActive==2">Auction ended with price </div>
                     <div id="starting-price">Auction starting price</div>
                 </div>
                 <div class="price-values">
@@ -29,12 +31,12 @@
                     <div id="starting-price-value">{{listing?.startingPrice}}</div>
                 </div>
             </div>
-            <div class="bid-input" *ngIf="listing?.isActive==1">
-                <mat-form-field>
+            <div class="bid-input" *ngIf="listing?.isActive!=0">
+                <mat-form-field *ngIf="listing?.isActive==1">
                     <mat-label>Bid on listing</mat-label>
                     <input matInput type="number" placeholder="Min {{suggestedBidAmount}}" [formControl]="bidAmount">
                 </mat-form-field>
-                <button mat-fab extended (click)="proceedBid()">Bid</button>
+                <button mat-fab extended (click)="proceedBid()" *ngIf="listing?.isActive==1">Bid</button>
                 <app-bid-grid [bids]="listing?.bids!"></app-bid-grid>
             </div>
         </div>

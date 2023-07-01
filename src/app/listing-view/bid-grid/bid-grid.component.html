@@ -1,6 +1,16 @@
 <mat-grid-list cols="(listing?.bids.length())+1" rowHeight="50px">
-    <mat-grid-tile
-        *ngFor="let bid of (bids)">
-      {{bid.bidderId}} {{bid.createdDate}} {{bid.updatedPrice}}
+    <mat-grid-tile>
+      <div class="tile-content">
+        <p><b>Name</b></p> 
+        <p><b>Date</b></p> 
+        <p><b>Price</b></p> 
+    </div>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let bid of (bids)">
+    <div class="tile-content">
+      <p>{{bid.bidderName}}.</p> 
+      <p>{{bid?.createdDate | date: 'dd MMM HH:mm'}}</p> 
+      <p>{{bid.updatedPrice}}</p> 
+    </div>
     </mat-grid-tile>
 </mat-grid-list>
